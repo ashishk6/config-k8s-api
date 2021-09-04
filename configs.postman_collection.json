@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "084acf71-7dbe-4078-9939-671bc17b7221",
+		"name": "configs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllConfigs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "getAllConfigsByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "getAllConfigsByQuery",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30000/search?metadata.monitoring.enabled=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "metadata.monitoring.enabled",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveConfigs",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"one\",\n    \"metadata\": {\n      \"monitoring\": {\n        \"enabled\": \"true\"\n      },\n      \"limits\": {\n        \"cpu\": {\n          \"enabled\": \"false\",\n          \"value\": \"300m\"\n        }\n      }\n    }\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:30000/configs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"configs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteConfigs",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30000/configs/two",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"configs",
+						"two"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateConfigs",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"datacenter-1\",\n    \"metadata\": {\n      \"monitoring\": {\n        \"enabled\": \"true\"\n      },\n      \"limits\": {\n        \"cpu\": {\n          \"enabled\": \"false\",\n          \"value\": \"30m\"\n        }\n      }\n    }\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:30000/configs/one",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"configs",
+						"one"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

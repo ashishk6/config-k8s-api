@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-application
+  namespace: sample
+  labels:
+    app: config-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-application
+  template:
+    metadata:
+      labels:
+        app: config-application
+    spec:
+      serviceAccountName: sample-sa
+      containers:
+      - name: config-application
+        image: ashishk6/configs:1.0
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: config-application-cm
